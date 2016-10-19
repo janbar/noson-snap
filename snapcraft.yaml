@@ -1,0 +1,72 @@
+name: noson
+version: "2.3.5-SNAP1"
+summary: The essential to control music from your SONOS devices
+description: |
+  It is the fast and smart controller for your SONOS devices on Ubuntu platform.
+  You can browse your music library and play track, radio or internet stream on
+  any zones. You can manage zone groups, queue and playlists and fully control
+  the playback. Enjoy!
+grade: stable
+confinement: strict
+
+apps:
+  noson-app:
+    command: bin/noson
+    plugs: [unity7, opengl, home, network, network-bind]
+
+  service:
+    command: bin/noson-service "$@"
+    plugs: [home]
+
+parts:
+  noson-app:
+    source: https://github.com/janbar/noson-app.git
+    source-type: git
+    source-branch: master
+    plugin: cmake
+    configflags: [-DCLICK_MODE=off]
+    build-packages:
+      - build-essential
+      - cmake
+      - gettext
+      - intltool
+      - qtbase5-dev
+      - qttools5-dev
+      - qttools5-dev-tools
+      - qtdeclarative5-dev
+      - qtdeclarative5-dev-tools
+      - zlib1g-dev
+      - libssl-dev
+    stage-packages:
+      - ubuntu-sdk-libs
+      - qtubuntu-desktop
+      - qtmir-desktop
+      - mir-graphics-drivers-desktop
+      - qmlscene
+      - qml-module-qtsysteminfo
+      - qml-module-qt-labs-settings
+      - qml-module-qtmultimedia
+      - qtdeclarative5-ubuntu-content1
+      - qtdeclarative5-particles-plugin
+      - qtdeclarative5-qtmultimedia-plugin
+      - qtdeclarative5-qtquick2-plugin
+      - qtdeclarative5-ubuntu-thumbnailer0.1
+      - qtdeclarative5-ubuntu-ui-toolkit-plugin
+      - qtdeclarative5-window-plugin
+      - suru-icon-theme
+      - ubuntu-mobile-icons
+      - zlib1g
+      - openssl
+    after: [desktop-qt5]
+
+  thumbnailer:
+    plugin: nil
+    stage-packages:
+      - thumbnailer-service
+
+  launcher:
+    source: .
+    plugin: dump
+    organize:
+      noson.launcher: bin/noson
+      noson-service.launcher: bin/noson-service

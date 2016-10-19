@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Noson
+Name[de]=Noson
+Name[fr]=Noson
+Name[it]=Noson
+Comment=Sonos music
+Exec=noson.noson-app
+Icon=${SNAP}/meta/gui/noson.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
