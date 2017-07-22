@@ -1,5 +1,5 @@
 name: noson
-version: "2.4.4-SNAP1"
+version: "2.4.5-SNAP1"
 summary: The essential to control music from your SONOS devices
 description: |
   It is the fast and smart controller for your SONOS devices on Ubuntu platform.
@@ -22,7 +22,7 @@ parts:
   noson-app:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 2.4.4
+    source-tag: 2.4.5
     source-depth: 1
     plugin: cmake
     configflags: [-DCLICK_MODE=off]
