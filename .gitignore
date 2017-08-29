@@ -2,3 +2,4 @@ noson_*.snap
 parts/
 prime/
 stage/
+.snapcraft/

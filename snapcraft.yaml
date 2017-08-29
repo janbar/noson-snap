@@ -1,5 +1,5 @@
 name: noson
-version: "2.4.8-SNAP1"
+version: "2.4.8-SNAP2"
 summary: The essential to control music from your SONOS devices
 description: |
   It is the fast and smart controller for your SONOS devices on Ubuntu platform.
@@ -12,17 +12,13 @@ confinement: strict
 apps:
   noson-app:
     command: bin/noson
-    plugs: [unity7, opengl, home, network, network-bind]
-
-  service:
-    command: bin/noson-service "$@"
-    plugs: [home]
+    plugs: [unity7, opengl, home, network, network-bind, media-hub]
 
 parts:
   noson-app:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 2.4.8
+    source-tag: 2.4.8.snap
     source-depth: 1
     plugin: cmake
     configflags: [-DCLICK_MODE=off]
@@ -40,9 +36,6 @@ parts:
       - libssl-dev
     stage-packages:
       - ubuntu-sdk-libs
-      - qtubuntu-desktop
-      - qtmir-desktop
-      - mir-graphics-drivers-desktop
       - qmlscene
       - qml-module-qtsysteminfo
       - qml-module-qt-labs-settings
@@ -51,7 +44,6 @@ parts:
       - qtdeclarative5-particles-plugin
       - qtdeclarative5-qtmultimedia-plugin
       - qtdeclarative5-qtquick2-plugin
-      - qtdeclarative5-ubuntu-thumbnailer0.1
       - qtdeclarative5-ubuntu-ui-toolkit-plugin
       - qtdeclarative5-window-plugin
       - suru-icon-theme
@@ -60,14 +52,9 @@ parts:
       - openssl
     after: [desktop-qt5]
 
-  thumbnailer:
-    plugin: nil
-    stage-packages:
-      - thumbnailer-service
-
-  launcher:
+  environment:
     source: .
     plugin: dump
     organize:
       noson.launcher: bin/noson
-      noson-service.launcher: bin/noson-service
+
