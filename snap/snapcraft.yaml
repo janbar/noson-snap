@@ -1,13 +1,15 @@
 name: noson
 version: "2.4.9-SNAP1"
-summary: The essential to control music from your SONOS devices
+summary: noson
 description: |
+  The essential to control music from your SONOS devices.
   It is the fast and smart controller for your SONOS devices on Ubuntu platform.
   You can browse your music library and play track, radio or internet stream on
   any zones. You can manage zone groups, queue and playlists and fully control
   the playback. Enjoy!
 grade: stable
 confinement: strict
+icon: noson.png
 
 apps:
   noson:
@@ -21,7 +23,7 @@ parts:
     source-tag: 2.4.9.snap
     source-depth: 1
     plugin: cmake
-    configflags: [-DCLICK_MODE=off]
+    configflags: [-DCLICK_MODE=off, -DCMAKE_INSTALL_PREFIX=/usr]
     build-packages:
       - build-essential
       - cmake
