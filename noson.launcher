@@ -35,6 +35,6 @@ export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/lib/$ARCH
 export APP_DIR=$SNAP
 export LOCPATH=$SNAP/usr/lib/locale
 
-export APP_ID=noson.janbar
+export APP_ID=noson
 exec "$SNAP/bin/desktop-launch" \
-    "$SNAP/usr/lib/$ARCH/qt5/bin/qmlscene" "$@" $SNAP/share/noson-app/Main.qml
+    "$SNAP/usr/lib/$ARCH/qt5/bin/qmlscene" "$@" $SNAP/share/$APP_ID/Main.qml
