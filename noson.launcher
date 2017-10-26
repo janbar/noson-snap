@@ -33,7 +33,7 @@ export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/usr/lib/$ARCH
 
 # Necessary for the SDK to find the translations directory
 export APP_DIR=$SNAP
-export LOCPATH=$SNAP/usr/lib/locale
+export TEXTDOMAINDIR=$SNAP/usr/share/locale
 
 export APP_ID=noson
 exec "$SNAP/bin/desktop-launch" \
