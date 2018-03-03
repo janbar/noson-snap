@@ -1,5 +1,5 @@
 name: noson
-version: "2.7.0-SNAP3"
+version: "2.8.0.snap"
 summary: noson
 description: |
   The essential to control music from your SONOS devices.
@@ -20,7 +20,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 2.7.0.snap3
+    source-tag: 2.8.0.snap
     source-depth: 1
     plugin: cmake
     configflags: [-DCLICK_MODE=off, -DCMAKE_INSTALL_PREFIX=/usr]
