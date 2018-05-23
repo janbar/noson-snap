@@ -20,7 +20,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 2.8.2.snap
+    source-tag: 2.8.3.snap
     source-depth: 1
     plugin: cmake
     configflags: [-DCLICK_MODE=off, -DCMAKE_INSTALL_PREFIX=/usr]
