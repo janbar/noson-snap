@@ -1,6 +1,7 @@
 name: noson
-version: "2.8.9.snap-1"
+version: "3.9.3.snap"
 summary: noson
+icon: noson.png
 description: |
   The essential to control music from your SONOS devices.
   It is the fast and smart controller for your SONOS devices on Ubuntu platform.
@@ -9,21 +10,21 @@ description: |
   the playback. Enjoy!
 grade: stable
 confinement: strict
-icon: noson.png
+base: core18
 
 apps:
   noson:
     command: bin/noson.launcher
-    plugs: [unity7, opengl, home, network, network-bind, media-hub]
+    plugs: [unity7, x11, wayland, opengl, home, network, network-bind, media-hub]
 
 parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 2.8.9.snap
+    source-tag: 3.9.3
     source-depth: 1
     plugin: cmake
-    configflags: [-DCLICK_MODE=off, -DCMAKE_INSTALL_PREFIX=/usr]
+    configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
     build-packages:
       - build-essential
       - cmake
@@ -34,24 +35,37 @@ parts:
       - qttools5-dev-tools
       - qtdeclarative5-dev
       - qtdeclarative5-dev-tools
+      - qtquickcontrols2-5-dev
+      - libqt5svg5-dev
       - zlib1g-dev
       - libssl-dev
-    stage-packages:
-      - ubuntu-sdk-libs
-      - qmlscene
-      - qml-module-qtsysteminfo
       - qml-module-qt-labs-settings
-      - qml-module-qtmultimedia
-      - qtdeclarative5-ubuntu-content1
-      - qtdeclarative5-particles-plugin
-      - qtdeclarative5-qtmultimedia-plugin
-      - qtdeclarative5-qtquick2-plugin
-      - qtdeclarative5-ubuntu-ui-toolkit-plugin
-      - qtdeclarative5-window-plugin
-      - suru-icon-theme
-      - ubuntu-mobile-icons
+      - qml-module-qtgraphicaleffects
+      - qml-module-qtqml-models2
+      - qml-module-qtquick2
+      - qml-module-qtquick-controls2
+      - qml-module-qtquick-layouts
+      - qml-module-qtquick-particles2
+      - qml-module-qtquick-templates2
+      - qml-module-qtquick-window2
+      - libqt5svg5
+    stage-packages:
+      - libqt5qml5
+      - libqt5quick5
+      - libqt5quickcontrols2-5
+      - qml-module-qt-labs-settings
+      - qml-module-qtgraphicaleffects
+      - qml-module-qtqml-models2
+      - qml-module-qtquick2
+      - qml-module-qtquick-controls2
+      - qml-module-qtquick-layouts
+      - qml-module-qtquick-particles2
+      - qml-module-qtquick-templates2
+      - qml-module-qtquick-window2
+      - qttranslations5-l10n
+      - libqt5svg5
       - zlib1g
-      - openssl
+      - libssl1.1
     after: [desktop-qt5]
 
   environment:
