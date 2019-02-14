@@ -1,5 +1,5 @@
 name: noson
-version: "3.9.7.snap"
+version: "3.10.0.snap"
 summary: noson
 icon: noson.png
 description: |
@@ -15,13 +15,22 @@ base: core18
 apps:
   noson:
     command: bin/noson.launcher
-    plugs: [unity7, x11, wayland, opengl, home, network, network-bind, media-hub]
+    plugs:
+      - unity7
+      - x11
+      - wayland
+      - opengl
+      - home
+      - network
+      - network-bind
+      - pulseaudio
+      - media-hub
 
 parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 3.9.7
+    source-tag: 3.10.0
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
@@ -39,6 +48,9 @@ parts:
       - libqt5svg5-dev
       - zlib1g-dev
       - libssl-dev
+      - libpulse-dev
+      - libflac-dev
+      - libflac++-dev
       - qml-module-qt-labs-settings
       - qml-module-qtgraphicaleffects
       - qml-module-qtqml-models2
@@ -66,6 +78,9 @@ parts:
       - libqt5svg5
       - zlib1g
       - libssl1.1
+      - libpulse0
+      - libflac++6v5
+      - libflac8
     after: [desktop-qt5]
 
   environment:
