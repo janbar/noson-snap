@@ -27,6 +27,26 @@ apps:
       - media-hub
 
 parts:
+  desktop-qt5-noson:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-commit: de8dc068a05d24cea5c0438863280ab641226570
+    source-subdir: qt/
+    plugin: make
+    make-parameters: ["FLAVOR=qt5"]
+    build-packages:
+      - qtbase5-dev
+      - dpkg-dev
+    stage-packages:
+      - libxkbcommon0
+      - ttf-ubuntu-font-family
+      - dmz-cursor-theme
+      - light-themes
+      - shared-mime-info
+      - libqt5gui5
+      - libgdk-pixbuf2.0-0
+      - libqt5svg5
+      - locales-all
+
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
@@ -81,7 +101,7 @@ parts:
       - libpulse0
       - libflac++6v5
       - libflac8
-    after: [desktop-qt5]
+    after: [desktop-qt5-noson]
 
   environment:
     source: .
