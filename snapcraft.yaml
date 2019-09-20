@@ -1,5 +1,5 @@
 name: noson
-version: "3.14.4.snap"
+version: "3.14.4.snap-1"
 summary: noson
 icon: noson.png
 description: |
@@ -42,7 +42,6 @@ parts:
       - dmz-cursor-theme
       - light-themes
       - shared-mime-info
-      - qtwayland5
       - libqt5gui5
       - libgdk-pixbuf2.0-0
       - libqt5svg5
@@ -96,7 +95,6 @@ parts:
       - qml-module-qtquick-templates2
       - qml-module-qtquick-window2
       - qttranslations5-l10n
-      - qtwayland5
       - libqt5svg5
       - zlib1g
       - libssl1.1
