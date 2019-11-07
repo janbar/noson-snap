@@ -1,5 +1,5 @@
 name: noson
-version: "3.15.2.snap"
+version: "3.16.0.snap"
 summary: noson
 icon: noson.png
 description: |
@@ -25,6 +25,8 @@ apps:
       - network-bind
       - pulseaudio
       - media-hub
+    slots:
+      - mpris
 
 parts:
   desktop-qt5-noson:
@@ -50,7 +52,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 3.15.2
+    source-tag: 3.16.0
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
@@ -71,6 +73,7 @@ parts:
       - libpulse-dev
       - libflac-dev
       - libflac++-dev
+      - libdbus-1-dev
       - qml-module-qt-labs-settings
       - qml-module-qtgraphicaleffects
       - qml-module-qtqml-models2
@@ -80,6 +83,7 @@ parts:
       - qml-module-qtquick-particles2
       - qml-module-qtquick-templates2
       - qml-module-qtquick-window2
+      - libqt5dbus5
       - libqt5svg5
     stage-packages:
       - libqt5qml5
@@ -95,12 +99,14 @@ parts:
       - qml-module-qtquick-templates2
       - qml-module-qtquick-window2
       - qttranslations5-l10n
+      - libqt5dbus5
       - libqt5svg5
       - zlib1g
       - libssl1.1
       - libpulse0
       - libflac++6v5
       - libflac8
+      - libdbus-1-3
     after: [desktop-qt5-noson]
 
   environment:
