@@ -12,6 +12,8 @@ export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH/pulseaudio:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH:$LD_LIBRARY_PATH
 
 mkdir -p $SNAP_USER_DATA/.config
+mkdir -p $SNAP_USER_DATA/.local
+mkdir -p $SNAP_USER_DATA/.cache
 
 # XKB config
 export XKB_CONFIG_ROOT=$SNAP/usr/share/X11/xkb
@@ -34,4 +36,11 @@ export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/usr/lib/$ARCH/noson
 
 export APP_ID=noson
 [ "$1" = "--cli" ] && shift && exec "$SNAP/usr/lib/$ARCH/noson/noson-cli" "$@"
+
+# Migrate the GUI settings
+if [ -f "$SNAP_USER_DATA/.config/janbar/noson.conf" ]; then
+  mv "$SNAP_USER_DATA/.config/janbar/noson.conf" "$SNAP_USER_DATA/.config/janbar/io.github.janbar.noson.conf"
+  [ -d "$SNAP_USER_DATA/.local/share/janbar/noson" ] && mv "$SNAP_USER_DATA/.local/share/janbar/noson" "$SNAP_USER_DATA/.local/share/janbar/io.github.janbar.noson"
+  [ -d "$SNAP_USER_DATA/.cache/janbar/noson" ] && mv "$SNAP_USER_DATA/.cache/janbar/noson" "$SNAP_USER_DATA/.cache/janbar/io.github.janbar.noson"
+fi
 exec "$SNAP/bin/desktop-launch" "$SNAP/usr/lib/$ARCH/noson/noson-gui" "$@"
