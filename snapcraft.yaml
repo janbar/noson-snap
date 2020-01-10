@@ -1,5 +1,5 @@
 name: noson
-version: "4.2.1.snap"
+version: "4.2.3.snap"
 summary: noson
 icon: noson.png
 description: |
@@ -52,7 +52,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 4.2.1
+    source-tag: 4.2.3
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
