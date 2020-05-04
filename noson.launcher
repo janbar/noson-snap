@@ -8,33 +8,13 @@ else
     ARCH="$SNAP_ARCH-linux-gnu"
 fi
 
-export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH/pulseaudio:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH:$LD_LIBRARY_PATH
-
 mkdir -p $SNAP_USER_DATA/.config
 mkdir -p $SNAP_USER_DATA/.local
 mkdir -p $SNAP_USER_DATA/.cache
 
-# XKB config
-export XKB_CONFIG_ROOT=$SNAP/usr/share/X11/xkb
-
-if [ "$DESKTOP_SESSION" == "unity8" ]; then
-    # Qt Platform to Mir
-    export QT_QPA_PLATFORM=ubuntumirclient
-    # Mir runtime
-    export MIR_SOCKET=$XDG_RUNTIME_DIR/mir_socket
-    export MIR_CLIENT_PLATFORM_PATH=$SNAP/usr/lib/$ARCH/mir/client-platform
-fi
-
-# Qt Libs
-export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH/qt5/libs:$LD_LIBRARY_PATH
-
-# Qt Modules
-export QT_PLUGIN_PATH=$SNAP/usr/lib/$ARCH/qt5/plugins
-export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/usr/lib/$ARCH/qt5/qml
-export QML2_IMPORT_PATH=$QML2_IMPORT_PATH:$SNAP/usr/lib/$ARCH/noson
-
 export APP_ID=noson
+
+# Launch the CLI else the GUI
 [ "$1" = "--cli" ] && shift && exec "$SNAP/usr/lib/$ARCH/noson/noson-cli" "$@"
 
 # Migrate the GUI settings
@@ -43,4 +23,7 @@ if [ -f "$SNAP_USER_DATA/.config/janbar/noson.conf" ]; then
   [ -d "$SNAP_USER_DATA/.local/share/janbar/noson" ] && mv "$SNAP_USER_DATA/.local/share/janbar/noson" "$SNAP_USER_DATA/.local/share/janbar/io.github.janbar.noson"
   [ -d "$SNAP_USER_DATA/.cache/janbar/noson" ] && mv "$SNAP_USER_DATA/.cache/janbar/noson" "$SNAP_USER_DATA/.cache/janbar/io.github.janbar.noson"
 fi
+
+# Launch the GUI
+export QML2_IMPORT_PATH=$SNAP/usr/lib/$ARCH/noson
 exec "$SNAP/bin/desktop-launch" "$SNAP/usr/lib/$ARCH/noson/noson-gui" "$@"
