@@ -1,21 +1,9 @@
 #!/bin/bash
 
-if [ "$SNAP_ARCH" == "amd64" ]; then
-    ARCH="x86_64-linux-gnu"
-elif [ "$SNAP_ARCH" == "armhf" ]; then
-    ARCH="arm-linux-gnueabihf"
-else
-    ARCH="$SNAP_ARCH-linux-gnu"
-fi
-
-mkdir -p $SNAP_USER_DATA/.config
-mkdir -p $SNAP_USER_DATA/.local
-mkdir -p $SNAP_USER_DATA/.cache
-
 export APP_ID=noson
 
 # Launch the CLI else the GUI
-[ "$1" = "--cli" ] && shift && exec "$SNAP/usr/lib/$ARCH/noson/noson-cli" "$@"
+[ "$1" = "--cli" ] && shift && exec "$NOSON_LIBRARIES/noson-cli" "$@"
 
 # Migrate the GUI settings
 if [ -f "$SNAP_USER_DATA/.config/janbar/noson.conf" ]; then
@@ -25,5 +13,5 @@ if [ -f "$SNAP_USER_DATA/.config/janbar/noson.conf" ]; then
 fi
 
 # Launch the GUI
-export QML2_IMPORT_PATH=$SNAP/usr/lib/$ARCH/noson
-exec "$SNAP/bin/desktop-launch" "$SNAP/usr/lib/$ARCH/noson/noson-gui" "$@"
+export QML2_IMPORT_PATH=$NOSON_LIBRARIES
+exec "$SNAP/bin/desktop-launch" "$NOSON_LIBRARIES/noson-gui" "$@"
