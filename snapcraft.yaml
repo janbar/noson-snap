@@ -1,5 +1,5 @@
 name: noson
-version: "4.3.3.snap"
+version: "4.3.4.snap"
 summary: noson
 icon: noson.png
 description: |
@@ -17,6 +17,7 @@ apps:
     command: bin/noson.launcher
     environment:
       NOSON_LIBRARIES: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/noson
+      DISABLE_WAYLAND: 1
     plugs:
       - unity7
       - x11
@@ -54,7 +55,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 4.3.3
+    source-tag: 4.3.4
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
