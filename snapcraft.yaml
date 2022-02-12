@@ -56,7 +56,7 @@ parts:
     source: https://github.com/janbar/noson-app.git
     source-type: git
     #source-tag: 5.0.1
-    source-commit: cf718d91d2c1da3d4aff7db58bdefe830da085fc
+    source-commit: e7a260d7e67a703f9e97936c585105a549701b04
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
