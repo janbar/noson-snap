@@ -33,9 +33,9 @@ apps:
 
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse.so:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse.so.0
+    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse.so.0
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse-simple.so:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse-simple.so.0
+    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse-simple.so.0
 
 parts:
   desktop-qt5-noson:
