@@ -1,5 +1,5 @@
 name: noson
-version: "5.0.4"
+version: "5.0.6"
 summary: noson
 icon: noson.png
 description: |
@@ -31,6 +31,12 @@ apps:
     slots:
       - mpris
 
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse.so:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse.so.0
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse-simple.so:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpulse-simple.so.0
+
 parts:
   desktop-qt5-noson:
     source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
@@ -55,7 +61,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 5.0.4
+    source-tag: 5.0.6
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
