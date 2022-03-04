@@ -1,5 +1,5 @@
 name: noson
-version: "5.2.0"
+version: "5.2.1"
 summary: noson
 icon: noson.png
 description: |
@@ -61,7 +61,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 5.2.0
+    source-tag: 5.2.1
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
