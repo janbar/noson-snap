@@ -1,5 +1,5 @@
 name: noson
-version: "5.6.7"
+version: "5.6.9"
 summary: noson
 icon: noson.png
 description: |
@@ -10,7 +10,7 @@ description: |
   the playback. Enjoy!
 grade: stable
 confinement: strict
-base: core18
+base: core20
 
 apps:
   noson:
@@ -61,7 +61,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 5.6.7
+    source-tag: 5.6.9_cmake3
     source-depth: 1
     plugin: cmake
     configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
