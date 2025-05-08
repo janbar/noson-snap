@@ -64,7 +64,9 @@ parts:
     source-tag: 5.6.9_cmake3
     source-depth: 1
     plugin: cmake
-    configflags: [-DCMAKE_INSTALL_PREFIX=/usr]
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCMAKE_BUILD_TYPE=Release
     build-packages:
       - build-essential
       - cmake
