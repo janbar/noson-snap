@@ -50,7 +50,6 @@ parts:
       - dpkg-dev
     stage-packages:
       - libxkbcommon0
-      - ttf-ubuntu-font-family
       - dmz-cursor-theme
       - light-themes
       - shared-mime-info
