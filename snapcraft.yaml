@@ -10,7 +10,7 @@ description: |
   the playback. Enjoy!
 grade: stable
 confinement: strict
-base: core20
+base: core22
 
 apps:
   noson:
@@ -61,7 +61,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-tag: 5.6.12
+    source-tag: 5.6.13
     source-depth: 1
     plugin: cmake
     cmake-parameters:
