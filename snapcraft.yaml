@@ -136,7 +136,7 @@ parts:
       - libqt5quickcontrols2-5
       - libqt5quickparticles5
       - zlib1g
-      - libssl1.1
+      - libssl3
       - libpulse0
       - libflac++6v5
       - libflac8
