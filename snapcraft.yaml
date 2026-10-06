@@ -1,5 +1,5 @@
 name: noson
-version: "5.6.27-3"
+version: "5.6.27-4"
 summary: noson
 icon: noson.png
 description: |
@@ -60,7 +60,7 @@ parts:
   noson:
     source: https://github.com/janbar/noson-app.git
     source-type: git
-    source-commit: 0b4eda26cf4f7ac1039a0cc2d61e8f1124412daf
+    source-commit: f046fe8e97e05e03e53c598bddccdac13981ae83
     source-depth: 1
     plugin: cmake
     cmake-parameters:
